@@ -16,15 +16,12 @@ int tempPin = A0;
 int ledPin = 4;
 
 void setup()
-{
+{ // initialize digital pin LED_BUILTIN as an output.
+  pinMode(ledPin, OUTPUT);
   Serial.begin(9600);
   delay(10);
   pinMode(ledPin, OUTPUT);
   pinMode(tempPin, INPUT);
-
-
-
-
 
   WiFi.begin(ssid, password);
 
@@ -41,18 +38,18 @@ void setup()
   }
   Serial.println("");
   Serial.println("WiFi connected");
-
   delay(10);
-
 }
 
-
-
 void loop() {
+  digitalWrite(ledPin, HIGH);   // turn the LED on (HIGH is the voltage level)
+  delay(200);                       // wait for a second
+  digitalWrite(ledPin, LOW);    // turn the LED off by making the voltage LOW
+  delay(200);                       // wait for a second
 
   reading = analogRead(tempPin);
   tempC = reading / 9.31;
-  float temp = (32 + (9 * tempC) / 5);
+  float temp = (30 + (9 * tempC) / 5); //approximately 2 degrees error correction for conversion and sensor inaccuracy
   Serial.println(temp);
   delay(1000);
 
@@ -82,6 +79,7 @@ void loop() {
 
   Serial.println("Waiting...");
   // thingspeak needs minimum 15 sec delay between updates
-  delay(20000);
+  //  currently set to 60 seconds
+  delay(60000);
 }
 
