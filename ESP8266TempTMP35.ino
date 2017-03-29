@@ -1,10 +1,10 @@
 #include <ESP8266WiFi.h>
 
-const char* ssid     = "shmoo3";
-const char* password = "s1lkw0rm";
+const char* ssid     = "xxxx";
+const char* password = "xxxx";
 
 // replace with your channel's thingspeak API key
-String apiKey = "KIH7BGQ47EKFDK1T";
+String apiKey = "xxxx";
 const char* server = "api.thingspeak.com";
 
 WiFiClient client;
